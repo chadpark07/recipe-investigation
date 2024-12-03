@@ -255,7 +255,7 @@ Now I will investigate the question asked in the introduction section of the pro
 A permutation test is chosen for this hypothesis test as I am trying to determine if there is a significant difference of ratings between two groups, Asian and American recipes, when it comes to the high number of ingredients. The test statistic chosen is difference in means as the hypothesis is directional and I will be able to determine which group has a higher mean rating out of the 2. The merged dataset will be filtered to only include Asian and American recipes then a boolean column called ‘heavy_ingredients’ will be added determining if the number of ingredients of a certain recipe in a recipe group is greater than the mean number of ingredients of that group. The final dataset used for testing will filter out recipes that have ‘False’ for ‘heavy_ingredients’ allowing me to test if people rate American and Asian recipes with high use of ingredients the same. The boolean column called ‘recipe_kind’, containing whether or not a recipe is Asian or American, will be shuffled in the permutations test 1000 times to generate test statistics under the null. 
 
 <iframe
-  src="assets/hypothesis_test.html"
+  src="assets/means_hypothesis_test.html"
   width="800"
   height="600"
   frameborder="0"
