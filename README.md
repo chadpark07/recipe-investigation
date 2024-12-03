@@ -1,10 +1,10 @@
-# Investigation on the Relationship Between the Number of Ingredients and Asian Recipes
+# **Investigation on the Relationship Between the Number of Ingredients and Asian Recipes**
 UC San Diego DSC 80 Final Project
 
 Author: Chanyoung Park
 
 
-## Introduction
+## **Introduction**
 
 The question that will be explored in this project will be: **"Do the number of steps and ingredients in asian recipes affect its rating when compared to other world cuisines?"**
 
@@ -55,7 +55,9 @@ number of steps and ingredients to use in a recipe for a specific cuisine as use
 rate recipes lower due to the number of steps and ingredients required.
 
 
-## Data Cleaning and Exploratory Data Analysis
+## **Data Cleaning and Exploratory Data Analysis**
+
+### **Data Cleaning**
 
 To get the dataset cleaned and ready for analysis the following steps were applied to the dataset:
 
@@ -121,34 +123,66 @@ The cleaned merged dataset has 234429 rows and 27 columns. The ‘dtypes’ and 
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ["'60-minutes-or-less'", "'time-to-make'", "'course'", "'main-ingredient'", "'preparation'", "'side-dishes'", "'vegetables'", "'easy'", "'beginner-cook'", "'broccoli'"]                                                                                |         6 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 | ['frozen broccoli cuts', 'cream of chicken soup', 'sharp cheddar cheese', 'garlic powder', 'ground black pepper', 'salt', 'milk', 'soy sauce', 'french-fried onions']          |               9 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 | False      | False         |      1.19628e+06 |      306168 | 2009-04-13 |        5 |            5 |
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ["'60-minutes-or-less'", "'time-to-make'", "'course'", "'main-ingredient'", "'preparation'", "'side-dishes'", "'vegetables'", "'easy'", "'beginner-cook'", "'broccoli'"]                                                                                |         6 | since there are already 411 recipes for broccoli casserole posted to "zaar" ,i decided to call this one  #412 broccoli casserole.i don't think there are any like this one in the database. i based this one on the famous "green bean casserole" from campbell's soup. but i think mine is better since i don't like cream of mushroom soup.submitted to "zaar" on may 28th,2008 | ['frozen broccoli cuts', 'cream of chicken soup', 'sharp cheddar cheese', 'garlic powder', 'ground black pepper', 'salt', 'milk', 'soy sauce', 'french-fried onions']          |               9 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 | False      | False         | 768828           |      306168 | 2013-08-02 |        5 |            5 |
 
+### **Univariate Analysis**
+
+The plots below show the distribution of 'n_ingredients' in the merged dataset filtered by Asian recipes and the distribution of 'n_ingredients' in the merged dataset filtered by American recipes. The distribution of Asian recipes is more uniform and has a higher center compared to that of the distribution of American recipes which looks more skewed to the right.
+
+<iframe
+  src="assets/univariate_asian_n_ingredients.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/univariate_american_n_ingredients.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### **Bivariate Analysis**
+
+The plot below shows a grouped bar plot of ‘n_ingedients’ means per rating in the merged dataset by Asian and American recipes. It looks like the average ‘n_ingedients’ in each rating category (1-5) for Asian recipes are all greater than that of the average ‘n_ingedients’ in each rating category for American recipes. This will be looked further into in the hypothesis testing section of the project.
+
+<iframe
+  src="assets/bivariate_mean_n_ingredients.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### **Interesting Aggregates**
 
 
-## Assessment of Missingness
+
+
+## **Assessment of Missingness**
 
 
 
 
-## Hypothesis Testing
+## **Hypothesis Testing**
 
 
 
 
-## Framing a Prediction Problem
+## **Framing a Prediction Problem**
 
 
 
 
-## Baseline Model
+## **Baseline Model**
 
 
 
 
-## Final Model
+## **Final Model**
 
 
 
 
-## Fairness Analysis
+## **Fairness Analysis**
 
 
 
