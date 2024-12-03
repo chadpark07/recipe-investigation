@@ -261,11 +261,18 @@ A permutation test is chosen for this hypothesis test as I am trying to determin
   frameborder="0"
 ></iframe>
 
-With an observed statistic of -0.03, p-value of 0.0, and under the significance level of 0.01, we can reject the null hypothesis stating that people rate American and Asian recipes with high use of ingredients the same. People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. This could mean that the nature of the ingredients used, as Asian ingredients could be harder to obtain or more expensive to buy, or some other factor is the cause of this conclusion. An absolute conclusion cannot be made.
+With an observed statistic of -0.03, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that people rate American and Asian recipes with high use of ingredients the same. People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. This could mean that the nature of the ingredients used, as Asian ingredients could be harder to obtain or more expensive to buy, or some other factor is the cause of this conclusion. An absolute conclusion cannot be made.
+
 
 ## **Framing a Prediction Problem**
 
+I plan to predict whether or not a recipe is Asian based on the different variables in the dataset. This would be a categorical problem and a binary classifier will need to be built as there are 2 discrete possible predictions: a recipe is Asian or a recipe is not Asian.
 
+I chose this variable to predict as I would like to know which factors go into deciding whether or not a recipe is Asian. I also found above in the hypothesis testing that people rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. I will use this variable as well as other simple variables for the baseline model to see if these variables are good predictors for deciding if a dish is Asian or not.
+
+For model evaluation F1-score will be used due to there being way more non-Asian recipes compared to that of Asian recipes. Other metrics such as accuracy may be problematic as the result can be misleading due to the imbalance of classes being predicted.
+
+The information I would know at the “time of prediction” would be all features in the merged dataset. I will use the features in this dataset for my prediction problem since they will already be known when deciding whether or not a recipe is Asian.
 
 
 ## **Baseline Model**
