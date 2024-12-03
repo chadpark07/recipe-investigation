@@ -1,4 +1,4 @@
-# **Investigation on the Relationship Between the Number of Ingredients and Asian Recipes**
+ **Investigation on the Relationship Between the Number of Ingredients and Asian Recipes**
 UC San Diego DSC 80 Final Project
 
 Author: Chanyoung Park
@@ -6,14 +6,12 @@ Author: Chanyoung Park
 
 ## **Introduction**
 
-The question that will be explored in this project will be: **"Do the number of steps and ingredients in asian recipes affect its rating when compared to other world cuisines?"**
+The question that will be explored in this project will be: "Do people rate Asian recipes differently due to the number of ingredients used compared to other cuisines?" Here we will focus on American recipes for “other cuisines”.
 
 The datasets I will be using in this project contain recipes and ratings from food.com scraped 
 from the authors of the paper "Generating Personalized Recipes from Historical User Preferences". 
 
 The first dataset which contain recipes has 83792 rows with relevant columns such as:
-- n_steps: Numbers of steps in the recipe
-- steps: Step by step instructions of the recipe
 - n_ingredients: Number of ingredients in the recipe
 - ingredients: Ingredients needed for the recipe
 
@@ -50,11 +48,7 @@ All of the columns in the two datasets are shown below:
 | `rating` | Rating given |
 | `review` | Review text |
 
-The results of the question being explored in this project will be important in determining how 
-simplicity (n_steps) and resources needed (n_ingredients) for a certain cuisine affects 
-the rating of a recipe. This information can be used by future recipe creators when considering the 
-number of steps and ingredients to use in a recipe for a specific cuisine as users could 
-rate recipes lower due to the number of steps and ingredients required.
+The results of the question being explored in this project will be important in determining how resources needed (‘n_ingredients’) for a certain cuisine affects the rating of a recipe. This information can be used by future recipe creators when considering the number of ingredients to use in a recipe for a specific cuisine as users could rate recipes lower due to the number of steps and ingredients required.
 
 
 ## **Data Cleaning and Exploratory Data Analysis**
@@ -248,8 +242,26 @@ A permutation test, shuffling on the ‘rating’ column, is run 1000 times to g
 
 ## **Hypothesis Testing**
 
+Now I will investigate the question asked in the introduction section of the project: “Do people rate Asian recipes differently due to the number of ingredients used compared to other cuisines?” 
 
+**Null Hypothesis**: People rate American and Asian recipes with high use of ingredients the same.
 
+**Alternate Hypothesis**: People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients.
+
+**Test Statistic**: Difference in mean rating between American recipes with high use of ingredients and Asian recipes with high use of ingredients.
+
+**Significance Level**: 0.01
+
+A permutation test is chosen for this hypothesis test as I am trying to determine if there is a significant difference of ratings between two groups, Asian and American recipes, when it comes to the high number of ingredients. The test statistic chosen is difference in means as the hypothesis is directional and I will be able to determine which group has a higher mean rating out of the 2. The merged dataset will be filtered to only include Asian and American recipes then a boolean column called ‘heavy_ingredients’ will be added determining if the number of ingredients of a certain recipe in a recipe group is greater than the mean number of ingredients of that group. The final dataset used for testing will filter out recipes that have ‘False’ for ‘heavy_ingredients’ allowing me to test if people rate American and Asian recipes with high use of ingredients the same. The boolean column called ‘recipe_kind’, containing whether or not a recipe is Asian or American, will be shuffled in the permutations test 1000 times to generate test statistics under the null. 
+
+<iframe
+  src="assets/hypothesis_test.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+With an observed statistic of -0.03, p-value of 0.0, and under the significance level of 0.01, we can reject the null hypothesis stating that people rate American and Asian recipes with high use of ingredients the same. People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. This could mean that the nature of the ingredients used, as Asian ingredients could be harder to obtain or more expensive to buy, or some other factor is the cause of this conclusion. An absolute conclusion cannot be made.
 
 ## **Framing a Prediction Problem**
 
