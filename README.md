@@ -198,8 +198,11 @@ I believe that the ‘review’ column is NMAR as people who are less passionate
 I will now look at the missingness of the ‘rating’ column dependent on other columns in the merged dataset. The first investigation involves if the missingness of rating depends on the number of minutes a recipe takes to make.
 
 **Null Hypothesis**: The missingness of rating does not depend on the number of minutes a recipe takes to make.
+
 **Alternate Hypothesis**: The missingness of rating does depend on the number of minutes a recipe takes to make.
+
 **Test Statistic**: Absolute difference in means of the distribution of minutes a recipe takes to make when rating is missing and distribution when rating is not missing.
+
 **Significance Level**: 0.01
 
 <iframe
@@ -221,8 +224,11 @@ A permutation test, shuffling on the ‘rating’ column, is run 1000 times to g
 The second investigation involves if the missingness of rating depends on the number of ingredients in a recipe.
 
 **Null Hypothesis**: The missingness of rating does not depend on the number of ingredients in a recipe.
+
 **Alternate Hypothesis**: The missingness of rating does depend on the number of ingredients in a recipe.
+
 **Test Statistic**: Absolute difference in means of the distribution of number of ingredients when rating is missing and distribution when rating is not missing.
+
 **Significance Level**: 0.01
 
 <iframe
