@@ -154,13 +154,11 @@ The plot below shows a grouped bar plot of ‘n_ingedients’ means per rating i
   frameborder="0"
 ></iframe>
 
-
 ### **Interesting Aggregates**
 
 The pivot table shown below shows the mean ratings of recipes that fall into each category of ‘n_ingedients’ and ‘n_steps’ from 1 to 20 for both categories. The pivot table can be used to visualize how ‘n_ingedients’ and ‘n_steps’ has an effect on ratings of recipes. At first glance, it looks like simpler recipes with less ingredients and steps have higher ratings but on a closer look, the results of simpler and more complex recipes don’t seem to have a consistent trend. The majority of cells have average ratings between 4.5 and 5.
 
-
-|   n_steps (down) | n_ingredients (right) |         1 |       2 |       3 |       4 |       5 |       6 |       7 |       8 |       9 |      10 |      11 |      12 |      13 |      14 |        15 |      16 |        17 |        18 |        19 |        20 |
+|   n_steps (down) - n_ingredients (right) |         1 |       2 |       3 |       4 |       5 |       6 |       7 |       8 |       9 |      10 |      11 |      12 |      13 |      14 |        15 |      16 |        17 |        18 |        19 |        20 |
 |-----------------------------------------:|----------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|----------:|--------:|----------:|----------:|----------:|----------:|
 |                                        1 | nan       | 4.69481 | 4.79063 | 4.71509 | 4.76071 | 4.7298  | 4.63761 | 4.60736 | 4.74242 | 4.70435 | 4.76119 | 4.60714 | 4.1     | 4.52941 | nan       | 4.6     |   4.85714 | nan       | nan       | nan       |
 |                                        2 |   5       | 4.71605 | 4.7425  | 4.75116 | 4.73818 | 4.68905 | 4.71169 | 4.73163 | 4.71212 | 4.70722 | 4.74528 | 4.57143 | 4.85106 | 4.64    |   4.1875  | 4.45455 | nan       | nan       | nan       |   3       |
