@@ -36,6 +36,8 @@ All of the columns in the two datasets are shown below:
 | `nutrition` | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
 | `n_steps` | Number of steps in recipe |
 | `steps` | Text for recipe steps, in order |
+| 'ingredients' | Text for recipe ingredients|
+| 'n_ingredients' | Number of ingredients in recipe|
 | `description` | User-provided description |
 
 **Ratings Dataset**
@@ -184,7 +186,60 @@ The pivot table shown below shows the mean ratings of recipes that fall into eac
 
 ## **Assessment of Missingness**
 
+The columns with the most amount of missing values in the merged dataset are: 'rating', 'avg_rating' (due to the fact this column is aggregated on the rating column), 'description', and ‘review’. The missingness of one of these columns will be explored below.
 
+### **NMAR Analysis**
+
+I believe that the ‘review’ column is NMAR as people who are less passionate about a recipe are less likely to spend their time leaving a review for the recipe compared to that of people who are more passionate. Additional data I might want to obtain that could explain the missingness, thereby making it MAR, could be a quantitative measurement of how excited or passionate a reviewer was about a specific recipe in the survey.
+
+
+### **Missingness Dependency**
+
+I will now look at the missingness of the ‘rating’ column dependent on other columns in the merged dataset. The first investigation involves if the missingness of rating depends on the number of minutes a recipe takes to make.
+
+**Null Hypothesis**: The missingness of rating does not depend on the number of minutes a recipe takes to make.
+**Alternate Hypothesis**: The missingness of rating does depend on the number of minutes a recipe takes to make.
+**Test Statistic**: Absolute difference in means of the distribution of minutes a recipe takes to make when rating is missing and distribution when rating is not missing.
+**Significance Level**: 0.01
+
+<iframe
+  src="assets/missingness_rating_minutes_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/missingness_rating_minutes_empirical_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+A permutation test, shuffling on the ‘rating’ column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 51.45, p-value of 0.118, and under the significance level of 0.01, we **fail to reject the null** hypothesis stating that the missingness of rating does not depend on the number of minutes a recipe takes to make. We can conclude that the missingness of rating is **not dependent on** the number of minutes a recipe takes to make.
+
+The second investigation involves if the missingness of rating depends on the number of ingredients in a recipe.
+
+**Null Hypothesis**: The missingness of rating does not depend on the number of ingredients in a recipe.
+**Alternate Hypothesis**: The missingness of rating does depend on the number of ingredients in a recipe.
+**Test Statistic**: Absolute difference in means of the distribution of number of ingredients when rating is missing and distribution when rating is not missing.
+**Significance Level**: 0.01
+
+<iframe
+  src="assets/missingness_rating_n_ingredients_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/missingness_rating_n_ingredients_empirical_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+A permutation test, shuffling on the ‘rating’ column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 0.16, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the missingness of rating does not depend on the number of ingredients in a recipe. We can conclude that the rating is **MAR dependent** on the number of ingredients in a recipe.
 
 
 ## **Hypothesis Testing**
