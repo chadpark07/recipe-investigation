@@ -21,7 +21,9 @@ The second dataset which contain ratings has 731927 rows with relevant columns s
 - rating: The rating that a given user has given a specific recipe
 
 All of the columns in the two datasets are shown below:
+
 Recipes Dataset
+
 | Column | Description |
 |---------------|-----------------------------------------------------------------------------|
 | `name` | Recipe name |
@@ -33,13 +35,14 @@ Recipes Dataset
 | `nutrition` | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
 | `n_steps` | Number of steps in recipe |
 | `steps` | Text for recipe steps, in order |
-| `description` | User-provided description
+| `description` | User-provided description |
 
 Ratings Dataset
+
 | Column | Description |
 |------------|-----------------------------|
 | `user_id` | User ID |
-| `recipe_id`| Recipe ID |
+| `recipe_id` | Recipe ID |
 | `date` | Date of interaction |
 | `rating` | Rating given |
 | `review` | Review text |
