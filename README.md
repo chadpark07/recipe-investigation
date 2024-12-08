@@ -1,4 +1,5 @@
  **Investigation on the Relationship Between the Number of Ingredients and Asian Recipes**
+ 
 UC San Diego DSC 80 Final Project
 
 Author: Chanyoung Park
@@ -12,12 +13,12 @@ The datasets I will be using in this project contain recipes and ratings from fo
 from the authors of the paper "Generating Personalized Recipes from Historical User Preferences". 
 
 The first dataset which contain recipes has 83792 rows with relevant columns such as:
-- n_ingredients: Number of ingredients in the recipe
-- ingredients: Ingredients needed for the recipe
+- `n_ingredients`: Number of ingredients in the recipe
+- `ingredients`: Ingredients needed for the recipe
 
 The second dataset which contain ratings has 731927 rows with relevant columns such as:
-- recipe_id: Id for a recipe that can be used to merge with the first dataset
-- rating: The rating that a given user has given a specific recipe
+- `recipe_id`: Id for a recipe that can be used to merge with the first dataset
+- `rating`: The rating that a given user has given a specific recipe
 
 All of the columns in the two datasets are shown below:
 
@@ -34,8 +35,8 @@ All of the columns in the two datasets are shown below:
 | `nutrition` | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
 | `n_steps` | Number of steps in recipe |
 | `steps` | Text for recipe steps, in order |
-| 'ingredients' | Text for recipe ingredients|
-| 'n_ingredients' | Number of ingredients in recipe|
+| `ingredients` | Text for recipe ingredients|
+| `n_ingredients` | Number of ingredients in recipe|
 | `description` | User-provided description |
 
 **Ratings Dataset**
@@ -48,7 +49,7 @@ All of the columns in the two datasets are shown below:
 | `rating` | Rating given |
 | `review` | Review text |
 
-The results of the question being explored in this project will be important in determining how resources needed (‘n_ingredients’) for a certain cuisine affects the rating of a recipe. This information can be used by future recipe creators when considering the number of ingredients to use in a recipe for a specific cuisine as users could rate recipes lower due to the number of steps and ingredients required.
+The results of the question being explored in this project will be important in determining how resources needed (`n_ingredients`) for a certain cuisine affects the rating of a recipe. This information can be used by future recipe creators when considering the number of ingredients to use in a recipe for a specific cuisine as users could rate recipes lower due to the number of steps and ingredients required.
 
 
 ## **Data Cleaning and Exploratory Data Analysis**
@@ -58,16 +59,16 @@ The results of the question being explored in this project will be important in 
 To get the dataset cleaned and ready for analysis the following steps were applied to the dataset:
 
 1. Split values in the nutrition column to individual columns
-	- Some columns, like 'nutrition', contain values that look like lists, but are actually strings that look like lists. For instance, per the data dictionary, each value in the 'nutrition' column contains information in the form "[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbohydrates (PDV)]"
-	- Individual columns in my dataset titled 'calories', 'total fat', etc. were created using the ‘.split()’ function and ‘expand’ parameter’ and converted to type floats
-	- The original  'nutrition’ column was dropped and these new split features can be used during data analysis as well as hypothesis testing and model tuning
+	- Some columns, like `nutrition`, contain values that look like lists, but are actually strings that look like lists. For instance, per the data dictionary, each value in the `nutrition` column contains information in the form "[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbohydrates (PDV)]"
+	- Individual columns in my dataset titled `calories`, `total fat`, etc. were created using the '.split()' function and 'expand' parameters and converted to type floats
+	- The original `nutrition` column was dropped and these new split features can be used during data analysis as well as hypothesis testing and model tuning
 
-2. Convert the 'tags' column into lists and add a column checking for asian and american recipes
-	- The ‘tags’ column is converted to lists using ‘.split()’
-	- To investigate the question posed above, columns called ‘is_asian’ and ‘is_american’ containing boolean values will be added to the dataset
+2. Convert the `tags` column into lists and add a column checking for asian and american recipes
+	- The `tags` column is converted to lists using '.split()'
+	- To investigate the question posed above, columns called `is_asian` and `is_american` containing boolean values will be added to the dataset
 
 3. Left merge the recipes and interactions datasets together
-	- The two datasets were left merged using the ‘id’ of the “Recipes” dataset and ‘recipe_id’ of the “Ratings” dataset
+	- The two datasets were left merged using the `id` of the “Recipes” dataset and `recipe_id` of the “Ratings” dataset
 	- This merged dataset gives us the ratings and reviews for each recipe
 
 4. In the merged dataset, fill all ratings of 0 with np.nan
@@ -76,7 +77,7 @@ To get the dataset cleaned and ready for analysis the following steps were appli
 5. Add Series containing the average rating per recipe to the dataset
 	- Getting the average rating per recipe which can have multiple ratings could later be used to understand the general rating across recipes
 
-The cleaned merged dataset has 234429 rows and 27 columns. The ‘dtypes’ and first 5 rows of the cleaned dataset are shown below. For ease of displaying the dataset, all columns except ‘steps’ and ‘review’ will be displayed:
+The cleaned merged dataset has 234429 rows and 27 columns. The 'dtypes' and first 5 rows of the cleaned dataset are shown below. For ease of displaying the dataset, all columns except `steps` and `review` will be displayed:
 
 **Columns of the Merged Dataset**
 
@@ -107,7 +108,7 @@ The cleaned merged dataset has 234429 rows and 27 columns. The ‘dtypes’ and 
 | `date`               | object     |
 | `rating`             | float64    |
 | `review`             | object     |
-|avg_rating            | float64    |
+|`avg_rating`          | float64    |
 
 **Cleaned dataset**
 
@@ -121,7 +122,7 @@ The cleaned merged dataset has 234429 rows and 27 columns. The ‘dtypes’ and 
 
 ### **Univariate Analysis**
 
-The plots below show the distribution of 'n_ingredients' in the merged dataset filtered by Asian recipes and the distribution of 'n_ingredients' in the merged dataset filtered by American recipes. The distribution of Asian recipes is more uniform and has a higher center compared to that of the distribution of American recipes which looks more skewed to the right.
+The plots below show the distribution of `n_ingredients` in the merged dataset filtered by Asian recipes and the distribution of `n_ingredients` in the merged dataset filtered by American recipes. The distribution of Asian recipes is more uniform and has a higher center compared to that of the distribution of American recipes which looks more skewed to the right.
 
 <iframe
   src="assets/univariate_asian_n_ingredients.html"
@@ -139,7 +140,7 @@ The plots below show the distribution of 'n_ingredients' in the merged dataset f
 
 ### **Bivariate Analysis**
 
-The plot below shows a grouped bar plot of ‘n_ingedients’ means per rating in the merged dataset by Asian and American recipes. It looks like the average ‘n_ingedients’ in each rating category (1-5) for Asian recipes are all greater than that of the average ‘n_ingedients’ in each rating category for American recipes. This will be looked further into in the hypothesis testing section of the project.
+The plot below shows a grouped bar plot of `n_ingedients` means per rating in the merged dataset by Asian and American recipes. It looks like the average `n_ingedients` in each rating category (1-5) for Asian recipes are all greater than that of the average `n_ingedients` in each rating category for American recipes. This will be looked further into in the hypothesis testing section of the project.
 
 <iframe
   src="assets/bivariate_mean_n_ingredients.html"
@@ -150,7 +151,7 @@ The plot below shows a grouped bar plot of ‘n_ingedients’ means per rating i
 
 ### **Interesting Aggregates**
 
-The pivot table shown below shows the mean ratings of recipes that fall into each category of ‘n_ingedients’ and ‘n_steps’ from 1 to 20 for both categories. The pivot table can be used to visualize how ‘n_ingedients’ and ‘n_steps’ has an effect on ratings of recipes. At first glance, it looks like simpler recipes with less ingredients and steps have higher ratings but on a closer look, the results of simpler and more complex recipes don’t seem to have a consistent trend. The majority of cells have average ratings between 4.5 and 5.
+The pivot table shown below shows the mean ratings of recipes that fall into each category of `n_ingedients` and `n_steps` from 1 to 20 for both categories. The pivot table can be used to visualize how `n_ingedients` and `n_steps` has an effect on ratings of recipes. At first glance, it looks like simpler recipes with less ingredients and steps have higher ratings but on a closer look, the results of simpler and more complex recipes don't seem to have a consistent trend. The majority of cells have average ratings between 4.5 and 5.
 
 |   n_steps (down) - n_ingredients (right) |         1 |       2 |       3 |       4 |       5 |       6 |       7 |       8 |       9 |      10 |      11 |      12 |      13 |      14 |        15 |      16 |        17 |        18 |        19 |        20 |
 |-----------------------------------------:|----------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|----------:|--------:|----------:|----------:|----------:|----------:|
@@ -178,16 +179,16 @@ The pivot table shown below shows the mean ratings of recipes that fall into eac
 
 ## **Assessment of Missingness**
 
-The columns with the most amount of missing values in the merged dataset are: 'rating', 'avg_rating' (due to the fact this column is aggregated on the rating column), 'description', and ‘review’. The missingness of one of these columns will be explored below.
+The columns with the most amount of missing values in the merged dataset are: `rating`, `avg_rating` (due to the fact this column is aggregated on the rating column), `description`, and `review`. The missingness of one of these columns will be explored below.
 
 ### **NMAR Analysis**
 
-I believe that the ‘review’ column is NMAR as people who are less passionate about a recipe are less likely to spend their time leaving a review for the recipe compared to that of people who are more passionate. Additional data I might want to obtain that could explain the missingness, thereby making it MAR, could be a quantitative measurement of how excited or passionate a reviewer was about a specific recipe in the survey.
+I believe that the `review` column is NMAR as people who are less passionate about a recipe are less likely to spend their time leaving a review for the recipe compared to that of people who are more passionate. Additional data I might want to obtain that could explain the missingness, thereby making it MAR, could be a quantitative measurement of how excited or passionate a reviewer was about a specific recipe in the survey.
 
 
 ### **Missingness Dependency**
 
-I will now look at the missingness of the ‘rating’ column dependent on other columns in the merged dataset. The first investigation involves if the missingness of rating depends on the number of minutes a recipe takes to make.
+I will now look at the missingness of the `rating` column dependent on other columns in the merged dataset. The first investigation involves if the missingness of rating depends on the number of minutes a recipe takes to make.
 
 **Null Hypothesis**: The missingness of rating does not depend on the number of minutes a recipe takes to make.
 
@@ -211,7 +212,7 @@ I will now look at the missingness of the ‘rating’ column dependent on other
   frameborder="0"
 ></iframe>
 
-A permutation test, shuffling on the ‘rating’ column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 51.45, p-value of 0.118, and under the significance level of 0.01, we **fail to reject the null** hypothesis stating that the missingness of rating does not depend on the number of minutes a recipe takes to make. We can conclude that the missingness of rating is **not dependent on** the number of minutes a recipe takes to make.
+A permutation test, shuffling on the `rating` column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 51.45, p-value of 0.118, and under the significance level of 0.01, we **fail to reject the null** hypothesis stating that the missingness of rating does not depend on the number of minutes a recipe takes to make. We can conclude that the missingness of rating is **not dependent on** the number of minutes a recipe takes to make.
 
 The second investigation involves if the missingness of rating depends on the number of ingredients in a recipe.
 
@@ -237,7 +238,7 @@ The second investigation involves if the missingness of rating depends on the nu
   frameborder="0"
 ></iframe>
 
-A permutation test, shuffling on the ‘rating’ column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 0.16, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the missingness of rating does not depend on the number of ingredients in a recipe. We can conclude that the rating is **MAR dependent** on the number of ingredients in a recipe.
+A permutation test, shuffling on the `rating` column, is run 1000 times to generate 1000 test statistics under the null. With an observed statistic of 0.16, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the missingness of rating does not depend on the number of ingredients in a recipe. We can conclude that the rating is **MAR dependent** on the number of ingredients in a recipe.
 
 
 ## **Hypothesis Testing**
@@ -252,7 +253,7 @@ Now I will investigate the question asked in the introduction section of the pro
 
 **Significance Level**: 0.01
 
-A permutation test is chosen for this hypothesis test as I am trying to determine if there is a significant difference of ratings between two groups, Asian and American recipes, when it comes to the high number of ingredients. The test statistic chosen is difference in means as the hypothesis is directional and I will be able to determine which group has a higher mean rating out of the 2. The merged dataset will be filtered to only include Asian and American recipes then a boolean column called ‘heavy_ingredients’ will be added determining if the number of ingredients of a certain recipe in a recipe group is greater than the mean number of ingredients of that group. The final dataset used for testing will filter out recipes that have ‘False’ for ‘heavy_ingredients’ allowing me to test if people rate American and Asian recipes with high use of ingredients the same. The boolean column called ‘recipe_kind’, containing whether or not a recipe is Asian or American, will be shuffled in the permutations test 1000 times to generate test statistics under the null. 
+A permutation test is chosen for this hypothesis test as I am trying to determine if there is a significant difference of ratings between two groups, Asian and American recipes, when it comes to the high number of ingredients. The test statistic chosen is difference in means as the hypothesis is directional and I will be able to determine which group has a higher mean rating out of the 2. The merged dataset will be filtered to only include Asian and American recipes then a boolean column called `heavy_ingredients` will be added determining if the number of ingredients of a certain recipe in a recipe group is greater than the mean number of ingredients of that group. The final dataset used for testing will filter out recipes that have 'False' for `heavy_ingredients` allowing me to test if people rate American and Asian recipes with high use of ingredients the same. The boolean column called `recipe_kind`, containing whether or not a recipe is Asian or American, will be shuffled in the permutations test 1000 times to generate test statistics under the null. 
 
 <iframe
   src="assets/means_hypothesis_test.html"
