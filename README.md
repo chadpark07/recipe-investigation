@@ -278,7 +278,7 @@ The information I would know at the “time of prediction” would be all featur
 
 ## **Baseline Model**
 
-The model I will be using is a Decision Tree Classifier. For the baseline model, the columns that will be used are:
+The model I used was a Decision Tree Classifier. For the baseline model, the columns used were:
 
 `n_ingredients`: Contains discrete quantitative values
 
@@ -286,8 +286,13 @@ The model I will be using is a Decision Tree Classifier. For the baseline model,
 
 `calories (#)`: Contains continuous quantitative values
 
-With the columns used being numerical, no encodings were performed for the baseline model. The performance of the baseline model resulted in a test set **F1-score** of **0.79**. 
-Although the score for the baseline is pretty good, some of the columns used for predictions were probably not strong enough separators of whether or not a recipe is Asian. Other columns in the final model will need to be added and encoded in order to increase the F1-score from the baseline model.
+The hyperparameters used were:
+
+`max_depth`: 25
+
+`n_estimators`: 100
+
+With the columns used being numerical, no encodings were performed for the baseline model. The performance of the baseline model resulted in a test set F1-score of 0.79.  Although the score for the baseline is pretty good given that this metric balances the significance of both precision and recall, some of the columns used for the predictions were probably not strong enough separators to determine whether or not a recipe is Asian. Other columns in the final model will need to be added and encoded in order to further better separate Asian and non-Asian recipes and increase the F1-score from the baseline model. The hyperparameters used in the baseline model will also need to be tuned in order to potentially increase the F1-score.
 
 
 ## **Final Model**
