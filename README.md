@@ -314,7 +314,7 @@ Using the 2 new features and tuning the 2 hyperparameters, the final model resul
 
 ## **Fairness Analysis**
 
-To assess model fairness, I will ask the question: “Does my model perform better for recipes that were submitted before 2009 compared to recipes that were submitted during and after 2009?” Here Group X will be the recipes that were submitted before 2009 and Group Y will be the recipes that were submitted during and after 2009. The evaluation metric used will be F1-score just like in the baseline and final models. In order to test for fairness, a boolean column called `before_2009` will be created and a permutation test run 1000 times and shuffled on the `before_2009` columns will be used.
+To assess model fairness, I will ask the question: “Does my model perform better for recipes that were submitted before 2009 compared to recipes that were submitted during and after 2009?” Here Group X will be the recipes that were submitted before 2009 and Group Y will be the recipes that were submitted during or after 2009. The evaluation metric used will be F1-score just like in the baseline and final models. In order to test for fairness, a boolean column called `before_2009` will be created and a permutation test run 1000 times and shuffled on the `before_2009` columns will be used.
 
 Null Hypothesis: The classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance
 
@@ -331,5 +331,5 @@ Significance level: 0.01
   frameborder="0"
 ></iframe>
 
-With an observed statistic of 0.07, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance. The model's F1-accuracy is higher for recipes that were submitted before 2009.
+With an observed statistic of 0.07, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance. The model's F1-accuracy is higher for recipes that were submitted before 2009 compared to recipes that were submitted during or after 2009.
 
