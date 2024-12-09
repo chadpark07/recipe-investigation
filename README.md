@@ -247,9 +247,9 @@ Now I will investigate the question asked in the introduction section of the pro
 
 **Null Hypothesis**: People rate American and Asian recipes with high use of ingredients the same.
 
-**Alternate Hypothesis**: People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients.
+**Alternate Hypothesis**: People rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. 
 
-**Test Statistic**: Difference in mean rating between American recipes with high use of ingredients and Asian recipes with high use of ingredients.
+**Test Statistic**: Difference in mean rating between American recipes with high use of ingredients and Asian recipes with high use of ingredients. (Asian - American)
 
 **Significance Level**: 0.01
 
