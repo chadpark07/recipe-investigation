@@ -331,5 +331,5 @@ Significance level: 0.01
   frameborder="0"
 ></iframe>
 
-With an observed statistic of 0.07, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance. The model's F1-accuracy is higher for recipes that were submitted before 2009 compared to recipes that were submitted during or after 2009.
+With an observed statistic of 0.07, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance. The model's F1-score is higher for recipes that were submitted before 2009 compared to recipes that were submitted during or after 2009.
 
