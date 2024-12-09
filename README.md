@@ -49,7 +49,7 @@ All of the columns in the two datasets are shown below:
 | `rating` | Rating given |
 | `review` | Review text |
 
-The results of the question being explored in this project will be important in determining how resources needed (`n_ingredients`) for a certain cuisine affects the rating of a recipe. This information can be used by future recipe creators when considering the number of ingredients to use in a recipe for a specific cuisine as users could rate recipes lower due to the number of steps and ingredients required.
+The results of the question being explored in this project will be important in determining how resources needed (`n_ingredients`) for a certain cuisine affects the rating of a recipe. This information can be used by future recipe creators when considering the number of ingredients to use in a recipe for a specific cuisine as users could rate recipes lower due to the number of ingredients required.
 
 
 ## **Data Cleaning and Exploratory Data Analysis**
@@ -63,7 +63,7 @@ To get the dataset cleaned and ready for analysis the following steps were appli
 	- Individual columns in my dataset titled `calories`, `total fat`, etc. were created using the '.split()' function and 'expand' parameters and converted to type floats
 	- The original `nutrition` column was dropped and these new split features can be used during data analysis as well as hypothesis testing and model tuning
 
-2. Convert the `tags` column into lists and add a column checking for asian and american recipes
+2. Convert the `tags` column into lists and add a column checking for Asian and American recipes
 	- The `tags` column is converted to lists using '.split()'
 	- To investigate the question posed above, columns called `is_asian` and `is_american` containing boolean values will be added to the dataset
 
@@ -75,9 +75,9 @@ To get the dataset cleaned and ready for analysis the following steps were appli
 	- Ratings are on a scale from 1 to 5 so ratings with 0 in the dataset were replaced with np.nan so that they do not interfere with analysis later on
 
 5. Add Series containing the average rating per recipe to the dataset
-	- Getting the average rating per recipe which can have multiple ratings could later be used to understand the general rating across recipes
+	- Getting the average rating per recipe which can have multiple ratings could later be used to understand the general ratings across recipes
 
-The cleaned merged dataset has 234429 rows and 27 columns. The 'dtypes' and first 5 rows of the cleaned dataset are shown below. For ease of displaying the dataset, all columns except `steps` and `review` will be displayed:
+The cleaned merged dataset has 234429 rows and 26 columns. The 'dtypes' and first 5 rows of the cleaned dataset are shown below. For ease of displaying the dataset, all columns except `steps` and `review` will be displayed:
 
 **Columns of the Merged Dataset**
 
