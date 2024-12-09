@@ -278,7 +278,16 @@ The information I would know at the “time of prediction” would be all featur
 
 ## **Baseline Model**
 
+The model I will be using is a Decision Tree Classifier. For the baseline model, the columns that will be used are:
 
+`n_ingredients`: Contains discrete quantitative values
+
+`n_steps`: Contains discrete quantitative values
+
+`calories (#)`: Contains continuous quantitative values
+
+With the columns used being numerical, no encodings were performed for the baseline model. The performance of the baseline model resulted in a test set **F1-score** of **0.79**. 
+Although the score for the baseline is pretty good, some of the columns used for predictions were probably not strong enough separators of whether or not a recipe is Asian. Other columns in the final model will need to be added and encoded in order to increase the F1-score from the baseline model.
 
 
 ## **Final Model**
@@ -287,7 +296,5 @@ The information I would know at the “time of prediction” would be all featur
 
 
 ## **Fairness Analysis**
-
-
 
 
