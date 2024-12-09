@@ -271,9 +271,9 @@ I plan to predict whether or not a recipe is Asian based on the different variab
 
 I chose this variable to predict as I would like to know which factors go into deciding whether or not a recipe is Asian. I also found above in the hypothesis testing that people rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. I will use this variable as well as other simple variables for the baseline model to see if these variables are good predictors for deciding if a dish is Asian or not.
 
-For model evaluation F1-score will be used due to there being way more non-Asian recipes compared to that of Asian recipes. Other metrics such as accuracy may be problematic as the result can be misleading due to the imbalance of classes being predicted.
+For model evaluation, F1-score will be used due to there being way more non-Asian recipes compared to that of Asian recipes. Other metrics such as accuracy may be problematic as the result can be misleading due to the imbalance of classes being predicted.
 
-The information I would know at the “time of prediction” would be all features in the merged dataset. I will use the features in this dataset for my prediction problem since they will already be known when deciding whether or not a recipe is Asian.
+The information I would know at the “time of prediction” would be all features in the merged dataset. I will use the features in this dataset for my prediction problem since they will already be known when deciding whether or not a recipe is Asian. In the future if the type of cuisine is missing, the model created could be used to fill in this missing value.
 
 
 ## **Baseline Model**
