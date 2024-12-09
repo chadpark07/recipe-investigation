@@ -278,7 +278,7 @@ The information I would know at the “time of prediction” would be all featur
 
 ## **Baseline Model**
 
-The model I used was a Decision Tree Classifier. For the baseline model, the columns used were:
+For this prediction problem, the model I used was a Decision Tree Classifier. For the baseline model, the columns used were:
 
 `n_ingredients`: Contains discrete quantitative values
 
@@ -297,9 +297,39 @@ With the columns used being numerical, no encodings were performed for the basel
 
 ## **Final Model**
 
+In the final model, 2 more features were added on top of the original features that were used in the baseline model:
 
+`ingredients`: Contains nominal categorical values
+
+`steps`: Contains nominal categorical values
+
+These 2 features were added as some ingredients may be more present in Asian recipes compared to other cuisines and some steps made while cooking may be more common in Asian recipes compared to other cuisines. These 2 new features can be used to better separate between Asian and non-Asian recipes, increasing the evaluation metric score for my model.
+
+The encodings that were used involved using a function transformer for both features. For the `ingredients` feature, the transformer finds whether or not the recipe has 'rice' as one of its ingredients and one hot encodes the boolean column. Although rice can be used in other cuisines other than Asian, this can be used to better separate Asian recipes from non-Asian recipes since rice is more common in Asian cuisine compared to other cuisines. For the `steps` feature, the transformer finds whether or not one of the steps involves using a 'wok' and one hot encodes the boolean column. Again although the wok can be used in other cuisines other than Asian, this can be used to better separate Asian recipes from non-Asian recipes since the wok is a more common cooking tool used in Asian cuisine compared to other cuisines.
+
+The final model uses the same type of model as the baseline model: a Decision Tree Classifier. 2 hyperparameters were used during the tuning process using grid search: n_estimators and max_depth. Using 3 fold cross validation,  n_estimators 70 to 150 using a step size of 10 and max_depth 10 to 60 using a step size of 5 was used. The result of grid search was max_depth = 30 and n_estimators = 120 for the best hyperparameters. 
+
+Using the 2 new features and tuning the 2 hyperparameters, the final model resulted in a test set F1-score of 0.84. This is a 5% increase in F1-score making the final model a pretty good improvement from the baseline model and a good model that can be used for the prediction problem when given new recipes not in the original training set.
 
 
 ## **Fairness Analysis**
 
+To assess model fairness, I will ask the question: “Does my model perform better for recipes that were submitted before 2009 compared to recipes that were submitted during and after 2009?” Here Group X will be the recipes that were submitted before 2009 and Group Y will be the recipes that were submitted during and after 2009. The evaluation metric used will be F1-score just like in the baseline and final models. In order to test for fairness, a boolean column called `before_2009` will be created and a permutation test run 1000 times and shuffled on the `before_2009` columns will be used.
+
+Null Hypothesis: The classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance
+
+Alternative Hypothesis: The classifier's F1-score is higher for recipes that were submitted before 2009
+
+Test statistic: Difference in F1-score (before 2009 minus after 2009)
+
+Significance level: 0.01
+
+<iframe
+  src="assets/fairness_analysis.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+With an observed statistic of 0.07, p-value of 0.0, and under the significance level of 0.01, we can **reject the null** hypothesis stating that the classifier's F1-score is the same for both recipes that were submitted before 2009 and after 2009, and any differences are due to chance. The model's F1-accuracy is higher for recipes that were submitted before 2009.
 
