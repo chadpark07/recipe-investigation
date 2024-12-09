@@ -269,7 +269,7 @@ With an observed statistic of -0.03, p-value of 0.0, and under the significance 
 
 I plan to predict whether or not a recipe is Asian based on the different variables in the dataset. This would be a categorical problem and a binary classifier will need to be built as there are 2 discrete possible predictions: a recipe is Asian or a recipe is not Asian.
 
-I chose this variable to predict as I would like to know which factors go into deciding whether or not a recipe is Asian. I also found above in the hypothesis testing that people rate American recipes with high use of ingredients higher than Asian recipes with high use of ingredients. I will use this variable as well as other simple variables for the baseline model to see if these variables are good predictors for deciding if a dish is Asian or not.
+I chose this variable to predict as I would like to know which factors go into deciding whether or not a recipe is Asian. I will use simple variables for the baseline model to see if these variables are good predictors for deciding if a dish is Asian or not. More variables will added based on the result of the baseline model for the final model.
 
 For model evaluation, F1-score will be used due to there being way more non-Asian recipes compared to that of Asian recipes. Other metrics such as accuracy may be problematic as the result can be misleading due to the imbalance of classes being predicted.
 
